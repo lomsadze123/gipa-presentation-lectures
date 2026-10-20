@@ -84,7 +84,9 @@ const Lecture01 = () => (
 
     {/* 02 */}
     <section id="why-presentation-skills">
-      <PartHeading number="02">Why should we learn presentation skills?</PartHeading>
+      <PartHeading number="02">
+        Why should we learn presentation skills?
+      </PartHeading>
 
       <h3>Imagine this situation</h3>
       <p>You have a great idea.</p>
@@ -99,8 +101,8 @@ const Lecture01 = () => (
         really create?
       </KeyIdea>
       <p>
-        In today's world, people are not evaluated only by what they know. It
-        is also incredibly important how effectively they can communicate their
+        In today's world, people are not evaluated only by what they know. It is
+        also incredibly important how effectively they can communicate their
         knowledge and ideas to others.
       </p>
       <p>
@@ -109,9 +111,8 @@ const Lecture01 = () => (
       </p>
       <blockquote>
         <strong>
-          A presentation is the art of communicating an idea so that an
-          audience can understand it, remember it, and, when necessary, take
-          action.
+          A presentation is the art of communicating an idea so that an audience
+          can understand it, remember it, and, when necessary, take action.
         </strong>
       </blockquote>
 
@@ -125,8 +126,7 @@ const Lecture01 = () => (
           <strong>Marketing teams</strong> present campaigns.
         </li>
         <li>
-          <strong>Startup founders</strong> explain business ideas to
-          investors.
+          <strong>Startup founders</strong> explain business ideas to investors.
         </li>
         <li>
           <strong>Sales representatives</strong> persuade potential customers.
@@ -148,12 +148,12 @@ const Lecture01 = () => (
 
       <Callout type="reflect" title="Think about your experience">
         <p>
-          When was the last time you gave a presentation or watched someone
-          else give one?
+          When was the last time you gave a presentation or watched someone else
+          give one?
         </p>
         <p>
-          Think about a university class, a business meeting, a job interview,
-          a conference, or a pitch.
+          Think about a university class, a business meeting, a job interview, a
+          conference, or a pitch.
         </p>
       </Callout>
     </section>
@@ -178,10 +178,12 @@ const Lecture01 = () => (
         the idea you believe in will remain unheard forever.
       </p>
       <p>
-        These are the kinds of thoughts that can keep people awake at night.
-        But guess what?
+        These are the kinds of thoughts that can keep people awake at night. But
+        guess what?
       </p>
-      <KeyIdea>Almost everyone has experienced the fear of public speaking.</KeyIdea>
+      <KeyIdea>
+        Almost everyone has experienced the fear of public speaking.
+      </KeyIdea>
       <p>
         Surveys about people's greatest fears have often ranked public speaking
         among the most commonly reported fears, sometimes even ahead of snakes
@@ -217,8 +219,7 @@ const Lecture01 = () => (
           },
           {
             name: "Love and belonging",
-            detail:
-              "Friendship, connection, acceptance, and relationships.",
+            detail: "Friendship, connection, acceptance, and relationships.",
           },
           {
             name: "Esteem",
@@ -262,8 +263,7 @@ const Lecture01 = () => (
       <PartHeading number="04">What types of presentations exist?</PartHeading>
       <p>
         Presentations can serve different purposes. Before preparing one, you
-        need to understand what you want your audience to learn, believe, or
-        do.
+        need to understand what you want your audience to learn, believe, or do.
       </p>
 
       <PresentationType
@@ -291,8 +291,8 @@ const Lecture01 = () => (
         purpose="To convince the audience to accept an idea, change an opinion, or take action."
         description={
           <p>
-            Providing information alone is not enough. You must explain why
-            your argument makes sense and why the audience should care.
+            Providing information alone is not enough. You must explain why your
+            argument makes sense and why the audience should care.
           </p>
         }
         examples={[
@@ -310,8 +310,8 @@ const Lecture01 = () => (
         purpose="To teach the audience how to do something."
         description={
           <p>
-            An instructional presentation breaks a process into clear steps
-            and helps people develop a practical skill.
+            An instructional presentation breaks a process into clear steps and
+            helps people develop a practical skill.
           </p>
         }
         examples={[
@@ -538,7 +538,7 @@ const Lecture01 = () => (
           },
         ]}
       />
-      <Callout type="warning" title="What this presenter did">
+      <Callout type="warning" title="Common Mistakes Presenters Should Avoid">
         <ul className="mb-0">
           <li>Put far too much text on the slides.</li>
           <li>Used a tiny font that is difficult to read.</li>
@@ -569,8 +569,7 @@ const Lecture01 = () => (
 
       <h3>Find it. Don't lose time.</h3>
       <p>
-        Imagine a small device that helps you find your keys when you lose
-        them.
+        Imagine a small device that helps you find your keys when you lose them.
       </p>
       <p>
         This is an example of how to turn a simple everyday problem into a
@@ -591,8 +590,8 @@ const Lecture01 = () => (
                 </p>
                 <p>
                   Personally, I've lost mine so many times that sometimes I
-                  spend more time searching for my keys before leaving home
-                  than getting dressed.
+                  spend more time searching for my keys before leaving home than
+                  getting dressed.
                 </p>
               </>
             ),
@@ -604,9 +603,9 @@ const Lecture01 = () => (
               <>
                 <p>
                   The problem is simple: keys are small, and we often leave them
-                  in our bags, pockets, or somewhere around the house. The
-                  worst part is that we can never seem to find them when we
-                  actually need them.
+                  in our bags, pockets, or somewhere around the house. The worst
+                  part is that we can never seem to find them when we actually
+                  need them.
                 </p>
                 <p>And ordinary keys can't tell us, “I'm right here.”</p>
               </>
@@ -658,8 +657,8 @@ const Lecture01 = () => (
               <>
                 <p>The main idea behind SmartKey is simple:</p>
                 <p>
-                  If losing something costs you time, technology should help
-                  you find it.
+                  If losing something costs you time, technology should help you
+                  find it.
                 </p>
               </>
             ),
@@ -670,13 +669,13 @@ const Lecture01 = () => (
             script: (
               <>
                 <p>
-                  Now imagine that this technology could work for more than
-                  just keys.
+                  Now imagine that this technology could work for more than just
+                  keys.
                 </p>
                 <p>
                   Bags, wallets, student cards, bicycles: anything you
-                  frequently search for could potentially benefit from a
-                  similar tracking system.
+                  frequently search for could potentially benefit from a similar
+                  tracking system.
                 </p>
                 <p>So the next time you lose something, ask yourself:</p>
                 <p>
@@ -709,8 +708,8 @@ const Lecture01 = () => (
           <strong>Main idea:</strong> It communicates one memorable message.
         </li>
         <li>
-          <strong>Call to action:</strong> It leaves the audience with
-          something to think about.
+          <strong>Call to action:</strong> It leaves the audience with something
+          to think about.
         </li>
       </ul>
     </section>
@@ -749,8 +748,7 @@ const Lecture01 = () => (
           },
           {
             name: "One example",
-            question:
-              "Show how your idea would work in a realistic situation.",
+            question: "Show how your idea would work in a realistic situation.",
           },
           {
             name: "Call to action",
