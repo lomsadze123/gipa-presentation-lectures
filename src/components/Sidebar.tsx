@@ -25,7 +25,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
     <>
       {isOpen && (
         <div
-          className="fixed inset-0 z-40 bg-navy-950/50 lg:hidden"
+          className="fixed inset-0 z-40 bg-navy-950/50"
           onClick={onClose}
           aria-hidden="true"
         />
@@ -33,8 +33,9 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
 
       <aside
         id="sidebar"
-        className={`fixed inset-y-0 left-0 z-50 flex w-72 flex-col border-r border-line bg-panel transition-transform duration-200 lg:sticky lg:top-14 lg:z-0 lg:h-[calc(100vh-3.5rem)] lg:translate-x-0 ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
+        inert={!isOpen}
+        className={`fixed inset-y-0 left-0 z-50 flex w-72 flex-col border-r border-line bg-panel transition-transform duration-200 ${
+          isOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full"
         }`}
       >
         <div className="flex items-center justify-between px-5 pb-2 pt-5">
@@ -44,7 +45,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
           <button
             onClick={onClose}
             aria-label="Close lecture list"
-            className="cursor-pointer rounded-md p-1 text-muted hover:bg-navy-100 lg:hidden"
+            className="cursor-pointer rounded-md p-1 text-muted hover:bg-navy-100"
           >
             <CloseIcon className="h-5 w-5" />
           </button>

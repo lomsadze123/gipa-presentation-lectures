@@ -16,9 +16,10 @@ const Layout = () => {
           aria-label="Open lecture list"
           aria-expanded={sidebarOpen}
           aria-controls="sidebar"
-          className="-ml-1.5 cursor-pointer rounded-md p-1.5 text-navy-100 hover:bg-navy-800 lg:hidden"
+          className="-ml-1.5 flex cursor-pointer items-center gap-2 rounded-md p-1.5 text-navy-100 hover:bg-navy-800"
         >
           <MenuIcon className="h-6 w-6" />
+          <span className="hidden text-sm font-semibold sm:inline">Lectures</span>
         </button>
         <Link to="/" className="flex items-baseline gap-2.5">
           <span className="text-lg font-extrabold tracking-tight">
