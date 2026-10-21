@@ -108,3 +108,27 @@ export const WarningIcon = (p: IconProps) => (
     <path d="M12 10v4M12 17.5v.5" />
   </svg>
 );
+
+export const DownloadIcon = (p: IconProps) => (
+  <svg {...base} {...p}>
+    <path d="M12 4v11M7 10.5l5 5 5-5M5 20h14" />
+  </svg>
+);
+
+export const UploadIcon = (p: IconProps) => (
+  <svg {...base} {...p}>
+    <path d="M12 16V5M7 9.5l5-5 5 5M5 20h14" />
+  </svg>
+);
+
+export const ExpandIcon = (p: IconProps) => (
+  <svg {...base} {...p}>
+    <path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" />
+  </svg>
+);
+
+export const PencilIcon = (p: IconProps) => (
+  <svg {...base} {...p}>
+    <path d="M4 20h4L19 9l-4-4L4 16v4zM13.5 6.5l4 4" />
+  </svg>
+);

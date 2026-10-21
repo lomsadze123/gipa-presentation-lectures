@@ -12,6 +12,7 @@ npm install
 npm run dev       # http://localhost:5173
 npm run build     # type-check + production build into dist/
 npm run lint
+npm test          # checker rules (vitest)
 ```
 
 ## Where things live
@@ -23,6 +24,7 @@ npm run lint
 | `src/lectures/lecture-NN/index.tsx` | Content of one lecture |
 | `src/components/content/` | Building blocks used inside lectures (see below) |
 | `src/components/` | Site shell: layout, sidebar, home, lecture page, locked page, 404 |
+| `src/builder/` | Presentation builder at `/builder` (see below) |
 | `public/lectures/NN/` | Images for lecture NN |
 | `source/` | Original `.md` files from the lecturer (not part of the site) |
 | `scripts/extract-images.mjs` | Pulls embedded images out of a Google Docs `.md` export |
@@ -89,6 +91,23 @@ The folder number, the `id` in `lectures.ts`, and the `id` passed to `LectureWra
 
 Plain `<p>`, `<h3>`, `<ul>`, `<ol>`, `<blockquote>` and `<table>` are styled automatically inside a lecture.
 
+## Presentation builder
+
+`/builder` lets a student build their own presentation in five steps: setup (type, topic, audience), structure, slides, rehearse, export.
+A rule-based checker runs in the browser and says what to fix, where, why, and links to the lecture part that teaches it.
+For now there are no links to it (header, sidebar, home page): open `/builder` by typing the URL. Search for `BUILDER-HIDDEN` to bring the links back.
+`/builder/present` is the full-screen slideshow (arrow keys, `N` notes, `F` full screen, `Esc` back).
+
+| Path | What it is |
+|---|---|
+| `src/builder/templates.ts` | Presentation types. Only `pitch` is `status: "ready"`; the rest show as "Later lecture" |
+| `src/builder/rules/` | Checker rules (`setup.ts`, `outline.ts`, `slides.ts`) and their tests |
+| `src/builder/useBuilder.ts` | Draft store, saved in the browser under `gipa-presentation:builder:v1` |
+| `src/builder/components/` | Builder screens |
+
+To open another type, fill in its `sections` (question, why, example, word limits, `checks`, `learnMore` link), set `timeLimit`, and change `status` to `"ready"`.
+Rules read their limits from the template, so most types need no new rule code.
+
 ## Cleaning up a Google Docs export
 
 Docs exports add noise. When converting, remove escapes like `\.` `\-` `\$` `\+` `\=`, drop the `**` around headings, and check that quotes open and close.
@@ -98,4 +117,4 @@ Docs exports add noise. When converting, remove escapes like `\.` `\-` `\$` `\+`
 Netlify site `gipa-presentation-lectures`: build command `npm run build`, publish directory `dist`.
 `public/_redirects` sends every path to `index.html`, so links like `/lectures/01` work on refresh.
 
-Student progress (completed lectures, checklist ticks) is stored in each student's browser only.
+Student progress (completed lectures, checklist ticks, builder drafts) is stored in each student's browser only.

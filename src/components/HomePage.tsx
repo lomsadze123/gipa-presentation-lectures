@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { course, siteTitle } from "../data/course";
 import { lectures } from "../data/lectures";
 import { useProgress } from "../hooks/useProgress";
+// BUILDER-HIDDEN: add PencilIcon back when the Builder card is uncommented.
 import { ArrowRightIcon, CheckIcon, LockIcon } from "./Icons";
 
 const HomePage = () => {
@@ -113,6 +114,26 @@ const HomePage = () => {
             ),
           )}
         </ol>
+
+        {/* BUILDER-HIDDEN: link hidden until the builder is approved; /builder route still works. Uncomment to show it.
+        <Link
+          to="/builder"
+          className="mt-10 flex flex-col gap-4 rounded-xl border border-accent-500/30 bg-accent-50 p-6 transition-colors hover:border-accent-500 sm:flex-row sm:items-center"
+        >
+          <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent-500 text-white">
+            <PencilIcon className="h-6 w-6" />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block text-lg font-bold text-navy-900">Practice: build your own presentation</span>
+            <span className="block text-muted">
+              Pick a type, write each part, turn it into slides. A checker explains what to fix and why.
+            </span>
+          </span>
+          <span className="inline-flex items-center gap-2 font-semibold text-accent-600">
+            Open the builder <ArrowRightIcon className="h-4 w-4" />
+          </span>
+        </Link>
+        */}
       </section>
     </div>
   );

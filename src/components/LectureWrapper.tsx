@@ -1,5 +1,5 @@
 import { type ReactNode, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { lectures } from "../data/lectures";
 import { siteTitle } from "../data/course";
 import { useProgress } from "../hooks/useProgress";
@@ -20,11 +20,15 @@ const LectureWrapper = ({ id, intro, children }: LectureWrapperProps) => {
   const next = index < lectures.length - 1 ? lectures[index + 1] : undefined;
   const { isCompleted, toggle } = useProgress();
   const done = isCompleted(id);
+  const { hash } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // Links like /lectures/01#bad-presentation land on that part once the lecture has loaded.
+    const target = hash && document.getElementById(decodeURIComponent(hash.slice(1)));
+    if (target) target.scrollIntoView();
+    else window.scrollTo(0, 0);
     if (lecture) document.title = `${id}. ${lecture.title} — ${siteTitle}`;
-  }, [id, lecture]);
+  }, [id, lecture, hash]);
 
   if (!lecture) return null;
 
