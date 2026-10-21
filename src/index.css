@@ -189,3 +189,16 @@ body {
     vertical-align: top;
   }
 }
+
+/* Builder "Save as PDF": one slide with its notes per landscape page. */
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 12mm;
+  }
+
+  .print-slide {
+    break-after: page;
+    break-inside: avoid;
+  }
+}

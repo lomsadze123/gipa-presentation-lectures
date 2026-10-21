@@ -4,6 +4,7 @@ import { lectures } from "../data/lectures";
 import { course } from "../data/course";
 import { useProgress } from "../hooks/useProgress";
 import NumberBadge from "./NumberBadge";
+// BUILDER-HIDDEN: add PencilIcon back when the Builder link is uncommented.
 import { CloseIcon } from "./Icons";
 
 interface SidebarProps {
@@ -34,7 +35,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
       <aside
         id="sidebar"
         inert={!isOpen}
-        className={`fixed inset-y-0 left-0 z-50 flex w-72 flex-col border-r border-line bg-panel transition-transform duration-200 ${
+        className={`fixed inset-y-0 left-0 z-50 flex w-72 print:hidden flex-col border-r border-line bg-panel transition-transform duration-200 ${
           isOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full"
         }`}
       >
@@ -105,6 +106,28 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
             )}
           </ol>
         </nav>
+
+        {/* BUILDER-HIDDEN: link hidden until the builder is approved; /builder route still works. Uncomment to show it.
+        <div className="border-t border-line px-3 py-3">
+          <NavLink
+            to="/builder"
+            onClick={onClose}
+            className={({ isActive }) =>
+              `flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors ${
+                isActive ? "bg-navy-100" : "hover:bg-navy-100/60"
+              }`
+            }
+          >
+            <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent-500 text-white">
+              <PencilIcon className="h-4 w-4" />
+            </span>
+            <span className="min-w-0">
+              <span className="block text-sm font-semibold text-navy-900">Build your presentation</span>
+              <span className="block text-xs text-muted">Practice with a checker</span>
+            </span>
+          </NavLink>
+        </div>
+        */}
 
         <p className="border-t border-line px-5 py-4 text-xs text-muted">
           {course.institution}, {course.faculty}
