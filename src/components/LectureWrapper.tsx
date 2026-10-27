@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { lectures } from "../data/lectures";
 import { siteTitle } from "../data/course";
 import { useProgress } from "../hooks/useProgress";
+import { useUnlocked } from "../hooks/useUnlocked";
 import { ArrowLeftIcon, ArrowRightIcon, CheckIcon, LockIcon } from "./Icons";
 
 interface LectureWrapperProps {
@@ -19,6 +20,7 @@ const LectureWrapper = ({ id, intro, children }: LectureWrapperProps) => {
   const prev = index > 0 ? lectures[index - 1] : undefined;
   const next = index < lectures.length - 1 ? lectures[index + 1] : undefined;
   const { isCompleted, toggle } = useProgress();
+  const { needsPassword } = useUnlocked();
   const done = isCompleted(id);
   const { hash } = useLocation();
 
@@ -120,7 +122,15 @@ const LectureWrapper = ({ id, intro, children }: LectureWrapperProps) => {
                 className="flex flex-col items-end rounded-xl bg-accent-500 p-4 text-right text-white hover:bg-accent-600"
               >
                 <span className="flex items-center gap-1.5 text-sm text-accent-100">
-                  Next <ArrowRightIcon className="h-4 w-4" />
+                  {needsPassword(next) ? (
+                    <>
+                      Next · password required <LockIcon className="h-4 w-4" />
+                    </>
+                  ) : (
+                    <>
+                      Next <ArrowRightIcon className="h-4 w-4" />
+                    </>
+                  )}
                 </span>
                 <span className="mt-1 font-semibold">
                   {next.id}. {next.title}

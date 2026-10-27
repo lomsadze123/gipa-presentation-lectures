@@ -1,8 +1,10 @@
 import { Suspense, lazy } from "react";
 import { useParams } from "react-router-dom";
 import { lectures } from "../data/lectures";
+import { useUnlocked } from "../hooks/useUnlocked";
 import LockedLecture from "./LockedLecture";
 import NotFound from "./NotFound";
+import PasswordGate from "./PasswordGate";
 
 const lectureModules = import.meta.glob("../lectures/lecture-*/index.tsx");
 
@@ -22,9 +24,12 @@ for (const [path, loader] of Object.entries(lectureModules)) {
 const LecturePage = () => {
   const { id } = useParams<{ id: string }>();
   const lecture = id ? lectures.find((l) => l.id === id) : undefined;
+  const { needsPassword } = useUnlocked();
 
   if (!lecture) return <NotFound />;
   if (lecture.status === "locked") return <LockedLecture lecture={lecture} />;
+  if (needsPassword(lecture))
+    return <PasswordGate key={lecture.id} lecture={lecture} />;
 
   const LectureComponent = lazyLectures[lecture.id];
   if (!LectureComponent) return <NotFound />;

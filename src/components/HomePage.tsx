@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import { course, siteTitle } from "../data/course";
 import { lectures } from "../data/lectures";
 import { useProgress } from "../hooks/useProgress";
+import { useUnlocked } from "../hooks/useUnlocked";
 // BUILDER-HIDDEN: add PencilIcon back when the Builder card is uncommented.
 import { ArrowRightIcon, CheckIcon, LockIcon } from "./Icons";
 
 const HomePage = () => {
   const { isCompleted } = useProgress();
+  const { needsPassword } = useUnlocked();
   const firstOpen = lectures.find((l) => l.status === "open");
 
   useEffect(() => {
@@ -83,9 +85,15 @@ const HomePage = () => {
                   className="flex h-full min-h-36 flex-col rounded-xl border border-line bg-white p-5 transition-colors hover:border-accent-500"
                 >
                   <span className="flex items-center justify-between">
-                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-accent-500 text-xs font-bold text-white">
-                      {l.id}
-                    </span>
+                    {needsPassword(l) ? (
+                      <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-dashed border-navy-300 text-navy-400">
+                        <LockIcon className="h-3.5 w-3.5" />
+                      </span>
+                    ) : (
+                      <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-accent-500 text-xs font-bold text-white">
+                        {l.id}
+                      </span>
+                    )}
                     {isCompleted(l.id) && (
                       <span className="inline-flex items-center gap-1 rounded-full bg-mint-50 px-2 py-0.5 text-xs font-semibold text-mint-600">
                         <CheckIcon className="h-3 w-3" strokeWidth={3} />
@@ -96,7 +104,11 @@ const HomePage = () => {
                   <span className="mt-auto pt-4 text-lg font-bold leading-tight text-navy-900">
                     {l.title}
                   </span>
-                  <span className="mt-1 text-sm text-muted">Lecture {l.id}</span>
+                  <span className="mt-1 text-sm text-muted">
+                    {needsPassword(l)
+                      ? `Lecture ${l.id} · Password required`
+                      : `Lecture ${l.id}`}
+                  </span>
                 </Link>
               </li>
             ) : (

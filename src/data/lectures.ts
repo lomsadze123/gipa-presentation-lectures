@@ -6,6 +6,11 @@ export interface LectureInfo {
   tags?: string[];
   /** "locked" lectures are listed but cannot be opened yet. */
   status: "open" | "locked";
+  /**
+   * SHA-256 hex of a password students must enter before an "open" lecture shows. Remove to open it for everyone.
+   * Generate: node -e "console.log(require('crypto').createHash('sha256').update('PASSWORD').digest('hex'))"
+   */
+  passwordHash?: string;
 }
 
 const locked = (id: string): LectureInfo => ({
@@ -31,6 +36,8 @@ export const lectures: LectureInfo[] = [
       "Build a clear message, engage your audience, and deliver it with confidence.",
     tags: ["5P model", "Structure", "Delivery", "Business case"],
     status: "open",
+    passwordHash:
+      "70d34a2e87f46e44f8f1c7e764feab30cf674a4707c6ab4837ebd12995b14e77",
   },
   locked("03"),
   locked("04"),

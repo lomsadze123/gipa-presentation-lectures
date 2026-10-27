@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { lectures } from "../data/lectures";
 import { course } from "../data/course";
 import { useProgress } from "../hooks/useProgress";
+import { useUnlocked } from "../hooks/useUnlocked";
 import NumberBadge from "./NumberBadge";
 // BUILDER-HIDDEN: add PencilIcon back when the Builder link is uncommented.
 import { CloseIcon } from "./Icons";
@@ -14,6 +15,7 @@ interface SidebarProps {
 
 const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   const { isCompleted } = useProgress();
+  const { needsPassword } = useUnlocked();
 
   useEffect(() => {
     if (!isOpen) return;
@@ -70,7 +72,13 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                       <>
                         <NumberBadge
                           number={l.id}
-                          state={isActive ? "active" : "open"}
+                          state={
+                            needsPassword(l)
+                              ? "locked"
+                              : isActive
+                                ? "active"
+                                : "open"
+                          }
                           completed={isCompleted(l.id)}
                         />
                         <span className="min-w-0">
@@ -78,7 +86,9 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                             {l.title}
                           </span>
                           <span className="block text-xs text-muted">
-                            Lecture {l.id}
+                            {needsPassword(l)
+                              ? "Password required"
+                              : `Lecture ${l.id}`}
                           </span>
                         </span>
                       </>

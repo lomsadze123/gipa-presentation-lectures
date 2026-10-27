@@ -67,6 +67,18 @@ When the lecturer sends the next `.md` file (example: lecture 02):
 5. `npm run build && npm run lint`, then deploy.
 
 The sidebar, the home page cards, and the previous lecture's **Next** button unlock on their own.
+
+### Password-protected lecture
+
+To keep an `open` lecture closed until class, add `passwordHash` (SHA-256 hex of the password) to its entry in `lectures.ts`:
+
+```bash
+node -e "console.log(require('crypto').createHash('sha256').update('PASSWORD').digest('hex'))"
+```
+
+It then shows with a lock, and opening it asks for the password in a modal. Once entered, that browser remembers it (`gipa-presentation:unlocked`).
+Remove `passwordHash` to open the lecture for everyone.
+This is a classroom gate, not real security: the site is static, so someone who digs into the downloaded JS can still reach the content.
 The folder number, the `id` in `lectures.ts`, and the `id` passed to `LectureWrapper` must all match.
 
 ## Content components
