@@ -22,7 +22,7 @@ interface OrderPuzzleProps {
 const startOrders = (groups: PuzzleGroup[]) =>
   groups.map((g) => g.items.map((_, i) => i));
 
-/** Students put a scrambled talk back in order, then check it against the steps. */
+/** Students put a scrambled talk back in order, then check it. Checking marks right/wrong only, never the answer. */
 const OrderPuzzle = ({ steps, groups }: OrderPuzzleProps) => {
   const [active, setActive] = useState(0);
   const [orders, setOrders] = useState(() => startOrders(groups));
@@ -45,17 +45,6 @@ const OrderPuzzle = ({ steps, groups }: OrderPuzzleProps) => {
     [next[pos], next[pos + delta]] = [next[pos + delta], next[pos]];
     setOrder(next);
     setCheck(false);
-  };
-
-  const showAnswer = () => {
-    setOrder(
-      [...order].sort(
-        (a, b) =>
-          steps.indexOf(group.items[a].step) -
-          steps.indexOf(group.items[b].step),
-      ),
-    );
-    setCheck(true);
   };
 
   const reset = () => {
@@ -125,8 +114,7 @@ const OrderPuzzle = ({ steps, groups }: OrderPuzzleProps) => {
                     ) : (
                       <CloseIcon className="h-3.5 w-3.5" strokeWidth={3} />
                     )}
-                    {item.step}
-                    {!correct && ` (step ${steps.indexOf(item.step) + 1})`}
+                    {correct ? "Right place" : "Wrong place"}
                   </span>
                 )}
               </span>
@@ -159,12 +147,6 @@ const OrderPuzzle = ({ steps, groups }: OrderPuzzleProps) => {
           className="cursor-pointer rounded-full bg-accent-500 px-5 py-2 font-display font-bold text-white hover:bg-accent-600"
         >
           Check order
-        </button>
-        <button
-          onClick={showAnswer}
-          className="cursor-pointer rounded-full border border-line px-4 py-2 font-display text-sm font-semibold text-navy-900 hover:bg-panel"
-        >
-          Show answer
         </button>
         <button
           onClick={reset}

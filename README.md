@@ -89,9 +89,9 @@ The folder number, the `id` in `lectures.ts`, and the `id` passed to `LectureWra
 | `PracticeTimer` | Rehearsal countdown split into stages |
 | `Checklist` | Ticks saved in the browser (`storageKey` must be unique) |
 | `PrincipleCards` | A model's principles (e.g. 5P): overview strip + one card each with question and takeaway |
-| `OrderPuzzle` | Groups put scrambled items back in step order, with check / show answer |
+| `OrderPuzzle` | Groups put scrambled items back in step order; Check marks right / wrong only, never the answer |
 | `LearningCycle` | Repeating steps as a flow with a loop back |
-| `Quiz` | Multiple choice, marked on pick, with score |
+| `Quiz` | Multiple choice; marks right / wrong without revealing the answer, score counts first tries |
 | `StatGrid` | Key numbers as large tiles |
 | `SlideOutline` | Suggested deck drawn as mini slides with bullet points |
 | `SortChallenge` | Include / Shorten / Leave out per fact, saved in the browser (`storageKey` must be unique) |
