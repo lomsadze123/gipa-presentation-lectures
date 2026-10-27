@@ -132,3 +132,15 @@ export const PencilIcon = (p: IconProps) => (
     <path d="M4 20h4L19 9l-4-4L4 16v4zM13.5 6.5l4 4" />
   </svg>
 );
+
+export const ChevronUpIcon = (p: IconProps) => (
+  <svg {...base} {...p}>
+    <path d="M6 15l6-6 6 6" />
+  </svg>
+);
+
+export const ChevronDownIcon = (p: IconProps) => (
+  <svg {...base} {...p}>
+    <path d="M6 9l6 6 6-6" />
+  </svg>
+);

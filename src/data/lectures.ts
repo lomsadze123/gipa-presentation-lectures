@@ -24,7 +24,14 @@ export const lectures: LectureInfo[] = [
     tags: ["Communication", "Public speaking", "Practical workshop"],
     status: "open",
   },
-  locked("02"),
+  {
+    id: "02",
+    title: "The Art of an Effective Presentation",
+    tagline:
+      "Build a clear message, engage your audience, and deliver it with confidence.",
+    tags: ["5P model", "Structure", "Delivery", "Business case"],
+    status: "open",
+  },
   locked("03"),
   locked("04"),
   locked("05"),
