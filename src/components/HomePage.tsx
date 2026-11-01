@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { course, siteTitle } from "../data/course";
 import { lectures } from "../data/lectures";
+import { homework } from "../data/homework";
 import { useProgress } from "../hooks/useProgress";
 import { useUnlocked } from "../hooks/useUnlocked";
 // BUILDER-HIDDEN: add PencilIcon back when the Builder card is uncommented.
@@ -121,6 +122,54 @@ const HomePage = () => {
                   <LockIcon className="h-3.5 w-3.5" />
                 </span>
                 <span className="mt-auto pt-4 font-semibold">Lecture {l.id}</span>
+                <span className="mt-1 text-sm">Opens later</span>
+              </li>
+            ),
+          )}
+        </ol>
+
+        <h2
+          id="homework-heading"
+          className="mt-12 flex items-center gap-3 text-2xl font-bold text-navy-900"
+        >
+          Homework
+        </h2>
+        <p className="mt-1 text-muted">
+          Team assignments you prepare and present in class.
+        </p>
+
+        <ol
+          className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3"
+          aria-labelledby="homework-heading"
+        >
+          {homework.map((h) =>
+            h.status === "open" ? (
+              <li key={h.id}>
+                <Link
+                  to={`/homework/${h.id}`}
+                  className="flex h-full min-h-36 flex-col rounded-xl border border-line bg-white p-5 transition-colors hover:border-accent-500"
+                >
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-accent-500 text-xs font-bold text-white">
+                    {h.id}
+                  </span>
+                  <span className="mt-auto pt-4 text-lg font-bold leading-tight text-navy-900">
+                    {h.title}
+                  </span>
+                  <span className="mt-1 text-sm text-muted">
+                    Homework {h.id}
+                  </span>
+                </Link>
+              </li>
+            ) : (
+              <li
+                key={h.id}
+                aria-disabled="true"
+                className="flex min-h-36 flex-col rounded-xl border border-dashed border-navy-300 bg-panel p-5 text-navy-400"
+              >
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-dashed border-navy-300">
+                  <LockIcon className="h-3.5 w-3.5" />
+                </span>
+                <span className="mt-auto pt-4 font-semibold">Homework {h.id}</span>
                 <span className="mt-1 text-sm">Opens later</span>
               </li>
             ),
