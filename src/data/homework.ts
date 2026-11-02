@@ -18,7 +18,7 @@ const locked = (id: string): HomeworkInfo => ({
 export const homework: HomeworkInfo[] = [
   {
     id: "01",
-    title: "Pitch a Product Launch",
+    title: "Presentation of Product Launch",
     tagline:
       "Pick Apple or Tesla and convince the decision-makers with a 10-slide, numbers-backed business case.",
     tags: ["Team presentation", "Business case", "Break-even", "10 slides"],
