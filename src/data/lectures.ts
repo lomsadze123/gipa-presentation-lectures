@@ -39,8 +39,27 @@ export const lectures: LectureInfo[] = [
     passwordHash:
       "70d34a2e87f46e44f8f1c7e764feab30cf674a4707c6ab4837ebd12995b14e77",
   },
-  locked("03"),
-  locked("04"),
+  {
+    id: "03",
+    title: "Student Presentations",
+    tagline: "Students present two business case scenarios: Tesla and Apple.",
+    tags: ["Case scenarios", "Tesla", "Apple"],
+    status: "open",
+  },
+  {
+    id: "04",
+    title: "Digital Marketing Services & Campaign Planning",
+    tagline:
+      "What agencies do, which ad channels fit which goal, and how campaigns are measured and paid for.",
+    tags: [
+      "Agencies",
+      "Google Ads",
+      "Meta Ads",
+      "Metrics & pricing",
+      "Client campaign",
+    ],
+    status: "open",
+  },
   locked("05"),
   locked("06"),
   locked("07"),
