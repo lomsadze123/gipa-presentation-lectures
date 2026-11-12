@@ -1,7 +1,7 @@
 # GIPA Presentation Lectures
 
 Lecture website for the **Project Design** course at GIPA (Faculty of Digital Marketing, 1st semester).
-The course has 8 lectures. A lecture is listed from day one but stays locked until it is opened.
+The course has 8 lectures and 3 homework assignments. Each is listed from day one but stays locked until it is opened.
 
 Live: https://gipa-presentation-lectures.netlify.app
 
@@ -22,11 +22,13 @@ npm test          # checker rules (vitest)
 | `src/data/course.ts` | Course name, faculty, semester, description, stats on the home page |
 | `src/data/lectures.ts` | The 8 lectures: id, title, tagline, tags, `status: "open" \| "locked"` |
 | `src/lectures/lecture-NN/index.tsx` | Content of one lecture |
+| `src/data/homework.ts` | The 3 homework assignments: id, title, tagline, tags, `status: "open" \| "locked"` |
+| `src/homework/homework-NN/index.tsx` | Content of one homework (wrapped in `HomeworkWrapper`) |
 | `src/components/content/` | Building blocks used inside lectures (see below) |
 | `src/components/` | Site shell: layout, sidebar, home, lecture page, locked page, 404 |
 | `src/builder/` | Presentation builder at `/builder` (see below) |
 | `public/lectures/NN/` | Images for lecture NN |
-| `source/` | Original `.md` files from the lecturer (not part of the site) |
+| `source/` | Original `.md` files from the lecturer (not part of the site); homework files are `hw-NN-<short-name>.md` |
 | `scripts/extract-images.mjs` | Pulls embedded images out of a Google Docs `.md` export |
 
 ## Opening the next lecture
@@ -81,6 +83,17 @@ Remove `passwordHash` to open the lecture for everyone.
 This is a classroom gate, not real security: the site is static, so someone who digs into the downloaded JS can still reach the content.
 The folder number, the `id` in `lectures.ts`, and the `id` passed to `LectureWrapper` must all match.
 
+## Opening the next homework
+
+Same idea as lectures (example: homework 02):
+
+1. Save the lecturer's file as `source/hw-02-<short-name>.md`.
+2. Create `src/homework/homework-02/index.tsx`, using `homework-01` as the pattern (`HomeworkWrapper id="02"`).
+3. In `src/data/homework.ts`, replace `locked("02")` with the real entry and `status: "open"`.
+4. `npm run build && npm run lint`, then deploy.
+
+The sidebar and home page Homework cards unlock on their own. Homework has no "Mark as completed" and does not count in the lecture progress bar.
+
 ## Content components
 
 | Component | Use it for |
@@ -107,6 +120,7 @@ The folder number, the `id` in `lectures.ts`, and the `id` passed to `LectureWra
 | `StatGrid` | Key numbers as large tiles |
 | `SlideOutline` | Suggested deck drawn as mini slides with bullet points |
 | `SortChallenge` | Include / Shorten / Leave out per fact, saved in the browser (`storageKey` must be unique) |
+| `CaseSwitch` | Alternative cases as tabs; the team's pick is remembered in the browser (`storageKey` must be unique) |
 | `ChoicePicker` | Pick one of your own `options` per item (e.g. ad channel per situation); saved, never graded (`storageKey` must be unique) |
 
 Plain `<p>`, `<h3>`, `<ul>`, `<ol>`, `<blockquote>` and `<table>` are styled automatically inside a lecture.
@@ -137,4 +151,4 @@ Docs exports add noise. When converting, remove escapes like `\.` `\-` `\$` `\+`
 Netlify site `gipa-presentation-lectures`: build command `npm run build`, publish directory `dist`.
 `public/_redirects` sends every path to `index.html`, so links like `/lectures/01` work on refresh.
 
-Student progress (completed lectures, checklist ticks, builder drafts) is stored in each student's browser only.
+Student progress (completed lectures, checklist ticks, chosen homework case, builder drafts) is stored in each student's browser only.
