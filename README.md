@@ -121,6 +121,7 @@ The sidebar and home page Homework cards unlock on their own. Homework has no "M
 | `SlideOutline` | Suggested deck drawn as mini slides with bullet points |
 | `SortChallenge` | Include / Shorten / Leave out per fact, saved in the browser (`storageKey` must be unique) |
 | `CaseSwitch` | Alternative cases as tabs; the team's pick is remembered in the browser (`storageKey` must be unique) |
+| `ChoicePicker` | Pick one of your own `options` per item (e.g. ad channel per situation); saved, never graded (`storageKey` must be unique) |
 
 Plain `<p>`, `<h3>`, `<ul>`, `<ol>`, `<blockquote>` and `<table>` are styled automatically inside a lecture.
 
